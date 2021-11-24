@@ -1,0 +1,20 @@
+--------------------------------------------------------------------------------
+Export all docker container files from Wordpress container (from /var/www/html).
+--------------------------------------------------------------------------------
+
+Idea: use 'docker cp' to copy container files to local directory.
+@see: https://support.sitecore.com/kb?id=kb_article_view&sysparm_article=KB0383441
+
+Example container: 
+'85127b0acfa1' is the id of the 'wordpress:latest' container.
+
+Precondition:
+The container must be up and running. You can check the current
+files and folders of the target container with 
+$ docker exec -it 85127b0acfa1 bash
+
+Cmd pattern:  
+$ docker cp <container>:<src-path> <local-dest-path> 
+
+Cmd example:
+$ docker cp 85127b0acfa1:/var/www/html ~/Documents/Temp/wp_test_01/backup-2021-11-23
